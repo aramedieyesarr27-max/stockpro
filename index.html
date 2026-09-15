@@ -1,0 +1,453 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StockPro — Gestion professionnelle</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#17130f">
+</head>
+
+<body>
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <h1>SP</h1>
+
+        <button id="btnAccueil">
+            🏠 Tableau de bord
+        </button>
+
+        <button id="btnProduits">
+            📦 Produits
+        </button>
+
+        <button id="btnEntree">
+            📥 Nouvelle entrée
+        </button>
+
+        <button id="btnVente">
+            📤 Nouvelle vente
+        </button>
+
+        <button id="btnHistorique">
+            📊 Historique
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         CONTENU PRINCIPAL
+    ========================== -->
+
+    <main class="main">
+
+        <!-- ACCUEIL -->
+
+        <section class="welcome">
+
+            <div>
+                <span class="welcome-small">
+                    ESPACE DE GESTION
+                </span>
+
+                <h2>
+                    Bienvenue sur StockPro
+                </h2>
+
+                <p>
+                    Gérez votre activité, votre stock et vos ventes
+                    depuis un seul espace.
+                </p>
+            </div>
+
+            <div class="welcome-badge">
+                <span>STOCK</span>
+                <strong>PRO</strong>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTIQUES -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3>📦 Produits</h3>
+
+                <strong id="totalProduits">
+                    0
+                </strong>
+
+                <span>
+                    Produits enregistrés
+                </span>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>⚠️ Stock faible</h3>
+
+                <strong id="stockFaible">
+                    0
+                </strong>
+
+                <span>
+                    À surveiller
+                </span>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>💰 Chiffre d'affaires</h3>
+
+                <strong id="totalVentes">
+                    0 F
+                </strong>
+
+                <span>
+                    Total des ventes
+                </span>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>📈 Bénéfice</h3>
+
+                <strong id="totalBenefice">
+                    0 F
+                </strong>
+
+                <span>
+                    Bénéfice réalisé
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUITS -->
+
+        <section class="box">
+
+            <div class="titre">
+
+                <div>
+                    <span class="section-label">
+                        INVENTAIRE
+                    </span>
+
+                    <h2>
+                        📦 Mes produits
+                    </h2>
+                </div>
+
+                <button id="btnAjouter">
+                    + Ajouter un produit
+                </button>
+
+            </div>
+
+
+            <!-- FORMULAIRE -->
+
+            <div id="formProduit" class="formulaire">
+
+                <h3>
+                    Ajouter un produit
+                </h3>
+
+                <input
+                    type="text"
+                    id="nom"
+                    placeholder="Nom du produit"
+                >
+
+                <input
+                    type="text"
+                    id="categorie"
+                    placeholder="Catégorie"
+                >
+
+                <input
+                    type="number"
+                    id="prixAchat"
+                    placeholder="Prix d'achat"
+                >
+
+                <input
+                    type="number"
+                    id="prixVente"
+                    placeholder="Prix de vente"
+                >
+
+                <input
+                    type="number"
+                    id="quantite"
+                    placeholder="Quantité"
+                >
+
+                <input
+                    type="number"
+                    id="stockMinimum"
+                    placeholder="Stock minimum"
+                >
+
+                <br>
+
+                <button id="btnEnregistrer">
+                    Enregistrer
+                </button>
+
+                <button id="btnAnnuler">
+                    Annuler
+                </button>
+
+            </div>
+
+
+            <!-- RECHERCHE -->
+
+            <input
+                type="text"
+                id="recherche"
+                placeholder="🔎 Rechercher un produit..."
+            >
+
+
+            <!-- TABLEAU -->
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Produit</th>
+                        <th>Catégorie</th>
+                        <th>Stock</th>
+                        <th>Prix</th>
+                        <th>État</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="listeProduits"></tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ÉVOLUTION DES VENTES -->
+
+        <section class="box">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        PERFORMANCE
+                    </span>
+
+                    <h2>
+                        📈 Évolution des ventes
+                    </h2>
+                </div>
+
+                <span class="premium-tag">
+                    STOCKPRO ANALYTICS
+                </span>
+
+            </div>
+
+
+            <div class="graph-container">
+
+                <canvas
+                    id="graphiqueVentes"
+                    height="120">
+                </canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOUVELLE ENTRÉE -->
+
+        <section
+            id="sectionEntree"
+            class="box cache">
+
+            <span class="section-label">
+                INVENTAIRE
+            </span>
+
+            <h2>
+                📥 Nouvelle entrée de stock
+            </h2>
+
+            <select id="produitEntree">
+
+                <option value="">
+                    Choisir un produit
+                </option>
+
+            </select>
+
+            <input
+                type="number"
+                id="quantiteEntree"
+                placeholder="Quantité reçue"
+            >
+
+            <button id="btnValiderEntree">
+                Enregistrer l'entrée
+            </button>
+
+            <button id="btnAnnulerEntree">
+                Annuler
+            </button>
+
+        </section>
+
+
+        <!-- NOUVELLE VENTE -->
+
+        <section
+            id="sectionVente"
+            class="box cache">
+
+            <span class="section-label">
+                COMMERCE
+            </span>
+
+            <h2>
+                📤 Nouvelle vente
+            </h2>
+
+            <select id="produitVente">
+
+                <option value="">
+                    Choisir un produit
+                </option>
+
+            </select>
+
+            <input
+                type="number"
+                id="quantiteVente"
+                placeholder="Quantité vendue"
+            >
+
+            <button id="btnValiderVente">
+                Enregistrer la vente
+            </button>
+
+            <button id="btnAnnulerVente">
+                Annuler
+            </button>
+
+        </section>
+
+
+        <!-- HISTORIQUE -->
+
+        <section
+            id="sectionHistorique"
+            class="box">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        ACTIVITÉ
+                    </span>
+
+                    <h2>
+                        📊 Historique des ventes
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Bénéfice</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="historique"></tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- PIED DE PAGE -->
+
+        <footer>
+
+            <strong>
+                StockPro
+            </strong>
+
+            <span>
+                Gestion simple. Vision professionnelle.
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- SCRIPT -->
+
+    <script src="script.js"></script>
+
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            navigator.serviceWorker.register(
+                "service-worker.js"
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,16 @@
+{
+    "name": "StockPro - Gestion de stock",
+    "short_name": "StockPro",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f4f6f8",
+    "theme_color": "#222222",
+    "description": "Application de gestion de stock",
+    "icons": [
+        {
+            "src": "./icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
