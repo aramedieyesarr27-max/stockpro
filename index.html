@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,45 +15,32 @@
 
 <body>
 
-    <!-- =========================
-         MENU
-    ========================== -->
-
+    <!-- MENU -->
     <aside class="sidebar">
 
         <h1>SP</h1>
 
-        <button id="btnAccueil">
-            🏠 Tableau de bord
-        </button>
+        <button id="btnAccueil">🏠 Tableau de bord</button>
 
-        <button id="btnProduits">
-            📦 Produits
-        </button>
+        <button id="btnProduits">📦 Produits</button>
 
-        <button id="btnEntree">
-            📥 Nouvelle entrée
-        </button>
+        <button id="btnEntree">📥 Nouvelle entrée</button>
 
-        <button id="btnVente">
-            📤 Nouvelle vente
-        </button>
+        <button id="btnVente">📤 Nouvelle vente</button>
 
-        <button id="btnHistorique">
-            📊 Historique
-        </button>
+        <button id="btnDettes">💳 Dettes</button>
+
+        <button id="btnHistorique">📊 Historique</button>
+
+        <button id="btnBoutique">🏪 Ma boutique</button>
 
     </aside>
 
 
-    <!-- =========================
-         CONTENU PRINCIPAL
-    ========================== -->
-
+    <!-- CONTENU -->
     <main class="main">
 
         <!-- ACCUEIL -->
-
         <section class="welcome">
 
             <div>
@@ -72,6 +58,11 @@
                 </p>
             </div>
 
+            <div class="date-heure">
+                <div id="dateActuelle"></div>
+                <div id="heureActuelle"></div>
+            </div>
+
             <div class="welcome-badge">
                 <span>STOCK</span>
                 <strong>PRO</strong>
@@ -81,73 +72,42 @@
 
 
         <!-- STATISTIQUES -->
-
         <section class="cards">
 
             <div class="card">
-
                 <h3>📦 Produits</h3>
-
-                <strong id="totalProduits">
-                    0
-                </strong>
-
-                <span>
-                    Produits enregistrés
-                </span>
-
+                <strong id="totalProduits">0</strong>
+                <span>Produits enregistrés</span>
             </div>
 
-
             <div class="card">
-
                 <h3>⚠️ Stock faible</h3>
-
-                <strong id="stockFaible">
-                    0
-                </strong>
-
-                <span>
-                    À surveiller
-                </span>
-
+                <strong id="stockFaible">0</strong>
+                <span>À surveiller</span>
             </div>
 
-
             <div class="card">
-
                 <h3>💰 Chiffre d'affaires</h3>
-
-                <strong id="totalVentes">
-                    0 F
-                </strong>
-
-                <span>
-                    Total des ventes
-                </span>
-
+                <strong id="totalVentes">0 F</strong>
+                <span>Total des ventes</span>
             </div>
 
+            <div class="card">
+                <h3>📈 Bénéfice</h3>
+                <strong id="totalBenefice">0 F</strong>
+                <span>Bénéfice réalisé</span>
+            </div>
 
             <div class="card">
-
-                <h3>📈 Bénéfice</h3>
-
-                <strong id="totalBenefice">
-                    0 F
-                </strong>
-
-                <span>
-                    Bénéfice réalisé
-                </span>
-
+                <h3>💳 Dettes</h3>
+                <strong id="totalDettes">0 F</strong>
+                <span>Reste à récupérer</span>
             </div>
 
         </section>
 
 
         <!-- PRODUITS -->
-
         <section class="box">
 
             <div class="titre">
@@ -157,9 +117,7 @@
                         INVENTAIRE
                     </span>
 
-                    <h2>
-                        📦 Mes produits
-                    </h2>
+                    <h2>📦 Mes produits</h2>
                 </div>
 
                 <button id="btnAjouter">
@@ -169,13 +127,10 @@
             </div>
 
 
-            <!-- FORMULAIRE -->
-
+            <!-- FORMULAIRE PRODUIT -->
             <div id="formProduit" class="formulaire">
 
-                <h3>
-                    Ajouter un produit
-                </h3>
+                <h3>Ajouter un produit</h3>
 
                 <input
                     type="text"
@@ -227,7 +182,6 @@
 
 
             <!-- RECHERCHE -->
-
             <input
                 type="text"
                 id="recherche"
@@ -235,8 +189,7 @@
             >
 
 
-            <!-- TABLEAU -->
-
+            <!-- TABLEAU PRODUITS -->
             <table>
 
                 <thead>
@@ -246,6 +199,7 @@
                         <th>Catégorie</th>
                         <th>Stock</th>
                         <th>Prix</th>
+                        <th>Enregistré le</th>
                         <th>État</th>
                         <th>Actions</th>
                     </tr>
@@ -260,19 +214,18 @@
 
 
         <!-- ÉVOLUTION DES VENTES -->
-
         <section class="box">
 
             <div class="section-heading">
 
                 <div>
+
                     <span class="section-label">
                         PERFORMANCE
                     </span>
 
-                    <h2>
-                        📈 Évolution des ventes
-                    </h2>
+                    <h2>📈 Évolution des ventes</h2>
+
                 </div>
 
                 <span class="premium-tag">
@@ -280,7 +233,6 @@
                 </span>
 
             </div>
-
 
             <div class="graph-container">
 
@@ -295,7 +247,6 @@
 
 
         <!-- NOUVELLE ENTRÉE -->
-
         <section
             id="sectionEntree"
             class="box cache">
@@ -304,9 +255,7 @@
                 INVENTAIRE
             </span>
 
-            <h2>
-                📥 Nouvelle entrée de stock
-            </h2>
+            <h2>📥 Nouvelle entrée de stock</h2>
 
             <select id="produitEntree">
 
@@ -334,7 +283,6 @@
 
 
         <!-- NOUVELLE VENTE -->
-
         <section
             id="sectionVente"
             class="box cache">
@@ -343,9 +291,7 @@
                 COMMERCE
             </span>
 
-            <h2>
-                📤 Nouvelle vente
-            </h2>
+            <h2>📤 Nouvelle vente</h2>
 
             <select id="produitVente">
 
@@ -361,6 +307,43 @@
                 placeholder="Quantité vendue"
             >
 
+            <input
+                type="text"
+                id="nomClientVente"
+                placeholder="Nom du client (facultatif)"
+            >
+
+            <select id="typePaiement">
+
+                <option value="comptant">
+                    💵 Paiement comptant
+                </option>
+
+                <option value="credit">
+                    💳 Vente à crédit
+                </option>
+
+            </select>
+
+            <input
+                type="number"
+                id="montantPaye"
+                placeholder="Montant donné par le client"
+                value="0"
+                min="0"
+            >
+
+            <div
+                id="monnaieVente"
+                style="
+                    margin-top:10px;
+                    font-weight:bold;
+                    font-size:15px;
+                "
+            >
+                💰 Total : 0 F
+            </div>
+
             <button id="btnValiderVente">
                 Enregistrer la vente
             </button>
@@ -372,8 +355,68 @@
         </section>
 
 
-        <!-- HISTORIQUE -->
+        <!-- DETTES -->
+        <section
+            id="sectionDettes"
+            class="box">
 
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        CRÉDIT CLIENT
+                    </span>
+
+                    <h2>💳 Gestion des dettes</h2>
+
+                </div>
+
+                <span class="premium-tag">
+                    À RÉCUPÉRER
+                </span>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    💰 Total restant à récupérer
+                </h3>
+
+                <strong id="totalDettesSection">
+                    0 F
+                </strong>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Date / Heure</th>
+                        <th>Client</th>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Payé</th>
+                        <th>Reste</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="listeDettes"></tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- HISTORIQUE -->
         <section
             id="sectionHistorique"
             class="box">
@@ -381,13 +424,13 @@
             <div class="section-heading">
 
                 <div>
+
                     <span class="section-label">
                         ACTIVITÉ
                     </span>
 
-                    <h2>
-                        📊 Historique des ventes
-                    </h2>
+                    <h2>📊 Historique</h2>
+
                 </div>
 
             </div>
@@ -398,11 +441,13 @@
                 <thead>
 
                     <tr>
-                        <th>Date</th>
+                        <th>Date / Heure</th>
+                        <th>Type</th>
                         <th>Produit</th>
                         <th>Quantité</th>
                         <th>Total</th>
                         <th>Bénéfice</th>
+                        <th>Reçu</th>
                     </tr>
 
                 </thead>
@@ -414,8 +459,86 @@
         </section>
 
 
-        <!-- PIED DE PAGE -->
+        <!-- MA BOUTIQUE -->
+        <section
+            id="sectionBoutique"
+            class="box cache">
 
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        IDENTITÉ COMMERCIALE
+                    </span>
+
+                    <h2>🏪 Ma boutique</h2>
+
+                </div>
+
+                <span class="premium-tag">
+                    HAJARA STORE
+                </span>
+
+            </div>
+
+
+            <p>
+                Ces informations apparaîtront automatiquement
+                sur tes reçus de vente.
+            </p>
+
+
+            <input
+                type="text"
+                id="nomBoutique"
+                placeholder="Nom de la boutique"
+                value="HAJARA STORE"
+            >
+
+
+            <input
+                type="text"
+                id="telephoneBoutique"
+                placeholder="Téléphone principal"
+                value="772818149"
+            >
+
+
+            <input
+                type="text"
+                id="telephoneBoutique2"
+                placeholder="Deuxième téléphone"
+                value="704243828"
+            >
+
+
+            <input
+                type="text"
+                id="adresseBoutique"
+                placeholder="Adresse"
+                value="Rufisque, Sénégal"
+            >
+
+
+            <input
+                type="text"
+                id="sloganBoutique"
+                placeholder="Slogan"
+                value="Gestion simple. Vision professionnelle."
+            >
+
+
+            <br>
+
+            <button id="btnSauverBoutique">
+                💾 Enregistrer les informations
+            </button>
+
+        </section>
+
+
+        <!-- PIED DE PAGE -->
         <footer>
 
             <strong>
@@ -432,8 +555,8 @@
 
 
     <!-- SCRIPT -->
-
     <script src="script.js"></script>
+
 
     <script>
 
@@ -450,4 +573,3 @@
 </body>
 
 </html>
-```
